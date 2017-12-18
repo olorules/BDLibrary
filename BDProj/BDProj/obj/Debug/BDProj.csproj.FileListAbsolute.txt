@@ -7,3 +7,6 @@ c:\users\olor\documents\visual studio 2015\Projects\BDProj\BDProj\obj\Debug\BDPr
 c:\users\olor\documents\visual studio 2015\Projects\BDProj\BDProj\obj\Debug\BDProj.csproj.GenerateResource.Cache
 c:\users\olor\documents\visual studio 2015\Projects\BDProj\BDProj\obj\Debug\BDProj.exe
 c:\users\olor\documents\visual studio 2015\Projects\BDProj\BDProj\obj\Debug\BDProj.pdb
+C:\Users\OLOR\repoProjBD\BDProj\BDProj\bin\Debug\BDProj.exe.config
+C:\Users\OLOR\repoProjBD\BDProj\BDProj\obj\Debug\BDProj.exe
+C:\Users\OLOR\repoProjBD\BDProj\BDProj\obj\Debug\BDProj.pdb
