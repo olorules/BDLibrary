@@ -41,6 +41,8 @@
             this.labelSearch = new System.Windows.Forms.Label();
             this.buttonSearch = new System.Windows.Forms.Button();
             this.buttonRecentlyAdded = new System.Windows.Forms.Button();
+            this.textBoxReservation = new System.Windows.Forms.TextBox();
+            this.buttonReservation = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewShowData)).BeginInit();
             this.SuspendLayout();
             // 
@@ -159,7 +161,7 @@
             // 
             // buttonRecentlyAdded
             // 
-            this.buttonRecentlyAdded.Location = new System.Drawing.Point(344, 311);
+            this.buttonRecentlyAdded.Location = new System.Drawing.Point(245, 294);
             this.buttonRecentlyAdded.Name = "buttonRecentlyAdded";
             this.buttonRecentlyAdded.Size = new System.Drawing.Size(102, 23);
             this.buttonRecentlyAdded.TabIndex = 12;
@@ -167,11 +169,30 @@
             this.buttonRecentlyAdded.UseVisualStyleBackColor = true;
             this.buttonRecentlyAdded.Click += new System.EventHandler(this.buttonRecentlyAdded_Click);
             // 
+            // textBoxReservation
+            // 
+            this.textBoxReservation.Location = new System.Drawing.Point(12, 322);
+            this.textBoxReservation.Name = "textBoxReservation";
+            this.textBoxReservation.Size = new System.Drawing.Size(100, 20);
+            this.textBoxReservation.TabIndex = 13;
+            // 
+            // buttonReservation
+            // 
+            this.buttonReservation.Location = new System.Drawing.Point(12, 348);
+            this.buttonReservation.Name = "buttonReservation";
+            this.buttonReservation.Size = new System.Drawing.Size(75, 23);
+            this.buttonReservation.TabIndex = 14;
+            this.buttonReservation.Text = "Zarezerwuj";
+            this.buttonReservation.UseVisualStyleBackColor = true;
+            this.buttonReservation.Click += new System.EventHandler(this.buttonReservation_Click);
+            // 
             // FormMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(628, 409);
+            this.Controls.Add(this.buttonReservation);
+            this.Controls.Add(this.textBoxReservation);
             this.Controls.Add(this.buttonRecentlyAdded);
             this.Controls.Add(this.buttonSearch);
             this.Controls.Add(this.labelSearch);
@@ -209,6 +230,8 @@
         private System.Windows.Forms.Label labelSearch;
         private System.Windows.Forms.Button buttonSearch;
         private System.Windows.Forms.Button buttonRecentlyAdded;
+        private System.Windows.Forms.TextBox textBoxReservation;
+        private System.Windows.Forms.Button buttonReservation;
     }
 }
 

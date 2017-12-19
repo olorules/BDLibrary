@@ -99,5 +99,30 @@ namespace BDProj
                 dataGridViewShowData.DataSource = recentlyAddedList;
             }
         }
+
+        private void buttonReservation_Click(object sender, EventArgs e)
+        {
+            var titleToReserve = textBoxReservation.Text;
+
+            if (titleToReserve == "")
+            {
+                MessageBox.Show("Podaj tytuł książki do rezerwacji.");
+                return;
+            }
+
+            var bookToReserve = (from books in context.Books
+                join copies in context.Copies on books.Id equals copies.BookId
+                where copies.Status == "Dostępna" && books.Name == titleToReserve
+                select copies).FirstOrDefault();
+
+            if (bookToReserve == null)
+            {
+                MessageBox.Show("Brak dostępnej książki do rezerwacji");
+                return;
+            }
+            
+            bookToReserve.Status = "Zarezerwowana";
+            context.SubmitChanges();
+        }
     }
 }
