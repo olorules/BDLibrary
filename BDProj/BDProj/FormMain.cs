@@ -124,5 +124,33 @@ namespace BDProj
             bookToReserve.Status = "Zarezerwowana";
             context.SubmitChanges();
         }
+
+        private void buttonShowUsers_Click(object sender, EventArgs e)
+        {
+            var users = from userss in context.Users
+                select new
+                {
+                    userss.Firstname,
+                    userss.Lastname,
+                    userss.Email,
+                    userss.Phone,
+                    userss.Address,
+                    userss.City,
+                    userss.ZipCode,
+                    userss.Country
+                };
+
+            dataGridViewShowData.DataSource = users;
+        }
+
+        private void buttonShowAvailableBooks_Click(object sender, EventArgs e)
+        {
+            var availableBooks = from books in context.Books
+                join copies in context.Copies on books.Id equals copies.BookId
+                where copies.Status == "Dostępna"
+                select copies.Book;
+
+            dataGridViewShowData.DataSource = availableBooks;
+        }
     }
 }

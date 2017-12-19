@@ -43,6 +43,8 @@
             this.buttonRecentlyAdded = new System.Windows.Forms.Button();
             this.textBoxReservation = new System.Windows.Forms.TextBox();
             this.buttonReservation = new System.Windows.Forms.Button();
+            this.buttonShowUsers = new System.Windows.Forms.Button();
+            this.buttonShowAvailableBooks = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewShowData)).BeginInit();
             this.SuspendLayout();
             // 
@@ -186,11 +188,35 @@
             this.buttonReservation.UseVisualStyleBackColor = true;
             this.buttonReservation.Click += new System.EventHandler(this.buttonReservation_Click);
             // 
+            // buttonShowUsers
+            // 
+            this.buttonShowUsers.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.buttonShowUsers.Location = new System.Drawing.Point(519, 348);
+            this.buttonShowUsers.Name = "buttonShowUsers";
+            this.buttonShowUsers.Size = new System.Drawing.Size(97, 40);
+            this.buttonShowUsers.TabIndex = 15;
+            this.buttonShowUsers.Text = "Pokaż klientów";
+            this.buttonShowUsers.UseVisualStyleBackColor = true;
+            this.buttonShowUsers.Click += new System.EventHandler(this.buttonShowUsers_Click);
+            // 
+            // buttonShowAvailableBooks
+            // 
+            this.buttonShowAvailableBooks.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.buttonShowAvailableBooks.Location = new System.Drawing.Point(416, 348);
+            this.buttonShowAvailableBooks.Name = "buttonShowAvailableBooks";
+            this.buttonShowAvailableBooks.Size = new System.Drawing.Size(97, 40);
+            this.buttonShowAvailableBooks.TabIndex = 16;
+            this.buttonShowAvailableBooks.Text = "Pokaż dostępne książki";
+            this.buttonShowAvailableBooks.UseVisualStyleBackColor = true;
+            this.buttonShowAvailableBooks.Click += new System.EventHandler(this.buttonShowAvailableBooks_Click);
+            // 
             // FormMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(628, 409);
+            this.Controls.Add(this.buttonShowAvailableBooks);
+            this.Controls.Add(this.buttonShowUsers);
             this.Controls.Add(this.buttonReservation);
             this.Controls.Add(this.textBoxReservation);
             this.Controls.Add(this.buttonRecentlyAdded);
@@ -232,6 +258,8 @@
         private System.Windows.Forms.Button buttonRecentlyAdded;
         private System.Windows.Forms.TextBox textBoxReservation;
         private System.Windows.Forms.Button buttonReservation;
+        private System.Windows.Forms.Button buttonShowUsers;
+        private System.Windows.Forms.Button buttonShowAvailableBooks;
     }
 }
 
