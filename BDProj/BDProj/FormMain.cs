@@ -65,8 +65,9 @@ namespace BDProj
 
         private void buttonAddUser_Click(object sender, EventArgs e)
         {
-            var hashedValue = CalculateMD5Hash("usr3324");
-            MessageBox.Show($"Witaj użytkowniku Admin "+hashedValue, "OK!");
+            AddUser addUser = new AddUser(context);
+            addUser.ShowDialog();
+            //addUser.Fo
         }
 
         private void buttonSearch_Click(object sender, EventArgs e)
