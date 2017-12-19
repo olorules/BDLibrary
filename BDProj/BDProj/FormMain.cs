@@ -74,12 +74,91 @@ namespace BDProj
         {
             var searchValue = textBoxSearch.Text.ToLower();
             var searchedBooks = from books in context.Books
-                                join authorList in context.AuthorLists on books.Id equals authorList.BookId
-                                join authors in context.Authors on authorList.AuthorId equals authors.Id
-                where books.Name.ToLower().Contains(searchValue) || books.Genre.ToLower().Contains(searchValue) || authors.Lastname.ToLower().Contains(searchValue)
-                select new {books.Name, books.Genre, authors.Firstname ,authors.Lastname};
+                join authorList in context.AuthorLists on books.Id equals authorList.BookId
+                join authors in context.Authors on authorList.AuthorId equals authors.Id
+                where books.Name.ToLower().Contains(searchValue) || books.Genre.ToLower().Contains(searchValue) ||
+                      authors.Lastname.ToLower().Contains(searchValue)
+                select new {books.Name, books.Genre, authors.Firstname, authors.Lastname};
 
             dataGridViewShowData.DataSource = searchedBooks;
+        }
+
+        private void buttonRecentlyAdded_Click(object sender, EventArgs e)
+        {
+            var recentlyAdded = from books in context.Books
+                join authorList in context.AuthorLists on books.Id equals authorList.BookId
+                join authors in context.Authors on authorList.AuthorId equals authors.Id
+                where books.DateOfAdd > DateTime.Now.AddDays(-30)
+                select new {books.Name, books.Genre, authors.Firstname, authors.Lastname};
+
+            var recentlyAddedList = recentlyAdded.ToList();
+
+            if (recentlyAddedList.Count == 0)
+                MessageBox.Show("Brak ostatnio dodanych książek");
+            else
+            {
+                dataGridViewShowData.DataSource = recentlyAddedList;
+            }
+        }
+
+        private void buttonReservation_Click(object sender, EventArgs e)
+        {
+            var titleToReserve = textBoxReservation.Text;
+
+            if (titleToReserve == "")
+            {
+                MessageBox.Show("Podaj tytuł książki do rezerwacji.");
+                return;
+            }
+
+            var bookToReserve = (from books in context.Books
+                join copies in context.Copies on books.Id equals copies.BookId
+                where copies.Status == "Dostępna" && books.Name == titleToReserve
+                select copies).FirstOrDefault();
+
+            if (bookToReserve == null)
+            {
+                MessageBox.Show("Brak dostępnej książki do rezerwacji");
+                return;
+            }
+            
+            bookToReserve.Status = "Zarezerwowana";
+            context.SubmitChanges();
+        }
+
+        private void buttonShowUsers_Click(object sender, EventArgs e)
+        {
+            var users = from userss in context.Users
+                select new
+                {
+                    userss.Firstname,
+                    userss.Lastname,
+                    userss.Email,
+                    userss.Phone,
+                    userss.Address,
+                    userss.City,
+                    userss.ZipCode,
+                    userss.Country
+                };
+
+            dataGridViewShowData.DataSource = users;
+        }
+
+        private void buttonShowAvailableBooks_Click(object sender, EventArgs e)
+        {
+            var availableBooks = from books in context.Books
+                join copies in context.Copies on books.Id equals copies.BookId
+                where copies.Status == "Dostępna"
+                select copies.Book;
+
+            dataGridViewShowData.DataSource = availableBooks;
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            var lateBorrowings = from late in context.Spoznienis select late;
+
+            dataGridViewShowData.DataSource = lateBorrowings;
         }
     }
 }
