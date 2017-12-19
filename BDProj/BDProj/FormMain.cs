@@ -73,12 +73,31 @@ namespace BDProj
         {
             var searchValue = textBoxSearch.Text.ToLower();
             var searchedBooks = from books in context.Books
-                                join authorList in context.AuthorLists on books.Id equals authorList.BookId
-                                join authors in context.Authors on authorList.AuthorId equals authors.Id
-                where books.Name.ToLower().Contains(searchValue) || books.Genre.ToLower().Contains(searchValue) || authors.Lastname.ToLower().Contains(searchValue)
-                select new {books.Name, books.Genre, authors.Firstname ,authors.Lastname};
+                join authorList in context.AuthorLists on books.Id equals authorList.BookId
+                join authors in context.Authors on authorList.AuthorId equals authors.Id
+                where books.Name.ToLower().Contains(searchValue) || books.Genre.ToLower().Contains(searchValue) ||
+                      authors.Lastname.ToLower().Contains(searchValue)
+                select new {books.Name, books.Genre, authors.Firstname, authors.Lastname};
 
             dataGridViewShowData.DataSource = searchedBooks;
+        }
+
+        private void buttonRecentlyAdded_Click(object sender, EventArgs e)
+        {
+            var recentlyAdded = from books in context.Books
+                join authorList in context.AuthorLists on books.Id equals authorList.BookId
+                join authors in context.Authors on authorList.AuthorId equals authors.Id
+                where books.DateOfAdd > DateTime.Now.AddDays(-30)
+                select new {books.Name, books.Genre, authors.Firstname, authors.Lastname};
+
+            var recentlyAddedList = recentlyAdded.ToList();
+
+            if (recentlyAddedList.Count == 0)
+                MessageBox.Show("Brak ostatnio dodanych książek");
+            else
+            {
+                dataGridViewShowData.DataSource = recentlyAddedList;
+            }
         }
     }
 }

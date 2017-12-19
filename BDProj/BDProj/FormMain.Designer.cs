@@ -40,6 +40,7 @@
             this.textBoxSearch = new System.Windows.Forms.TextBox();
             this.labelSearch = new System.Windows.Forms.Label();
             this.buttonSearch = new System.Windows.Forms.Button();
+            this.buttonRecentlyAdded = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewShowData)).BeginInit();
             this.SuspendLayout();
             // 
@@ -156,11 +157,22 @@
             this.buttonSearch.UseVisualStyleBackColor = true;
             this.buttonSearch.Click += new System.EventHandler(this.buttonSearch_Click);
             // 
+            // buttonRecentlyAdded
+            // 
+            this.buttonRecentlyAdded.Location = new System.Drawing.Point(344, 311);
+            this.buttonRecentlyAdded.Name = "buttonRecentlyAdded";
+            this.buttonRecentlyAdded.Size = new System.Drawing.Size(102, 23);
+            this.buttonRecentlyAdded.TabIndex = 12;
+            this.buttonRecentlyAdded.Text = "Ostatnio dodane";
+            this.buttonRecentlyAdded.UseVisualStyleBackColor = true;
+            this.buttonRecentlyAdded.Click += new System.EventHandler(this.buttonRecentlyAdded_Click);
+            // 
             // FormMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(628, 409);
+            this.Controls.Add(this.buttonRecentlyAdded);
             this.Controls.Add(this.buttonSearch);
             this.Controls.Add(this.labelSearch);
             this.Controls.Add(this.textBoxSearch);
@@ -196,6 +208,7 @@
         private System.Windows.Forms.TextBox textBoxSearch;
         private System.Windows.Forms.Label labelSearch;
         private System.Windows.Forms.Button buttonSearch;
+        private System.Windows.Forms.Button buttonRecentlyAdded;
     }
 }
 
