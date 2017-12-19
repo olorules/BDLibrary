@@ -152,5 +152,12 @@ namespace BDProj
 
             dataGridViewShowData.DataSource = availableBooks;
         }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            var lateBorrowings = from late in context.Spoznienis select late;
+
+            dataGridViewShowData.DataSource = lateBorrowings;
+        }
     }
 }
