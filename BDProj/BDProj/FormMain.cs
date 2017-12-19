@@ -70,5 +70,15 @@ namespace BDProj
             //string hashedvalue = calculatemd5hash("admin12345");
             //messageBox.Show($"Witaj użytkowniku Admin "+hashedValue, "OK!");
         }
+
+        private void buttonSearch_Click(object sender, EventArgs e)
+        {
+            var searchValue = textBoxSearch.Text.ToLower();
+            var searchedBooks = from books in context.Books
+                where books.Name.ToLower().Contains(searchValue) || books.Genre.ToLower().Contains(searchValue)
+                select books;
+
+            dataGridViewShowData.DataSource = searchedBooks;
+        }
     }
 }

@@ -37,11 +37,17 @@
             this.buttonLogin = new System.Windows.Forms.Button();
             this.buttonAddBook = new System.Windows.Forms.Button();
             this.buttonAddUser = new System.Windows.Forms.Button();
+            this.textBoxSearch = new System.Windows.Forms.TextBox();
+            this.labelSearch = new System.Windows.Forms.Label();
+            this.buttonSearch = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewShowData)).BeginInit();
             this.SuspendLayout();
             // 
             // dataGridViewShowData
             // 
+            this.dataGridViewShowData.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.dataGridViewShowData.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridViewShowData.Location = new System.Drawing.Point(185, 12);
             this.dataGridViewShowData.Name = "dataGridViewShowData";
@@ -50,6 +56,7 @@
             // 
             // buttonShowAllBorrows
             // 
+            this.buttonShowAllBorrows.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.buttonShowAllBorrows.Location = new System.Drawing.Point(519, 257);
             this.buttonShowAllBorrows.Name = "buttonShowAllBorrows";
             this.buttonShowAllBorrows.Size = new System.Drawing.Size(97, 40);
@@ -102,6 +109,7 @@
             // 
             // buttonAddBook
             // 
+            this.buttonAddBook.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.buttonAddBook.Location = new System.Drawing.Point(519, 303);
             this.buttonAddBook.Name = "buttonAddBook";
             this.buttonAddBook.Size = new System.Drawing.Size(97, 39);
@@ -119,11 +127,43 @@
             this.buttonAddUser.UseVisualStyleBackColor = true;
             this.buttonAddUser.Click += new System.EventHandler(this.buttonAddUser_Click);
             // 
+            // textBoxSearch
+            // 
+            this.textBoxSearch.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.textBoxSearch.Location = new System.Drawing.Point(247, 268);
+            this.textBoxSearch.Name = "textBoxSearch";
+            this.textBoxSearch.Size = new System.Drawing.Size(100, 20);
+            this.textBoxSearch.TabIndex = 9;
+            // 
+            // labelSearch
+            // 
+            this.labelSearch.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.labelSearch.AutoSize = true;
+            this.labelSearch.Location = new System.Drawing.Point(182, 271);
+            this.labelSearch.Name = "labelSearch";
+            this.labelSearch.Size = new System.Drawing.Size(59, 13);
+            this.labelSearch.TabIndex = 10;
+            this.labelSearch.Text = "Wyszukaj: ";
+            // 
+            // buttonSearch
+            // 
+            this.buttonSearch.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.buttonSearch.Location = new System.Drawing.Point(353, 266);
+            this.buttonSearch.Name = "buttonSearch";
+            this.buttonSearch.Size = new System.Drawing.Size(75, 23);
+            this.buttonSearch.TabIndex = 11;
+            this.buttonSearch.Text = "Wyszukaj";
+            this.buttonSearch.UseVisualStyleBackColor = true;
+            this.buttonSearch.Click += new System.EventHandler(this.buttonSearch_Click);
+            // 
             // FormMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(628, 409);
+            this.Controls.Add(this.buttonSearch);
+            this.Controls.Add(this.labelSearch);
+            this.Controls.Add(this.textBoxSearch);
             this.Controls.Add(this.buttonAddUser);
             this.Controls.Add(this.buttonAddBook);
             this.Controls.Add(this.buttonLogin);
@@ -153,6 +193,9 @@
         private System.Windows.Forms.Button buttonLogin;
         private System.Windows.Forms.Button buttonAddBook;
         private System.Windows.Forms.Button buttonAddUser;
+        private System.Windows.Forms.TextBox textBoxSearch;
+        private System.Windows.Forms.Label labelSearch;
+        private System.Windows.Forms.Button buttonSearch;
     }
 }
 
