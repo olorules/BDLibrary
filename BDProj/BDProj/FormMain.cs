@@ -70,7 +70,7 @@ namespace BDProj
 
         private void buttonAddUser_Click(object sender, EventArgs e)
         {
-            string hashedValue = CalculateMD5Hash("user134");
+            string hashedValue = CalculateMD5Hash("usr3324");
             MessageBox.Show($"Witaj użytkowniku Admin "+hashedValue, "OK!");
         }
 
