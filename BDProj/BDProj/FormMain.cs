@@ -41,7 +41,7 @@ namespace BDProj
 
         private void buttonLogin_Click(object sender, EventArgs e)
         {
-            string hashedValue = CalculateMD5Hash(textBoxPassword.Text);
+            var hashedValue = CalculateMD5Hash(textBoxPassword.Text);
             var user = (from usr in context.Users
                 where usr.Email == textBoxLogin.Text && usr.Password == hashedValue
                 select usr).FirstOrDefault();
