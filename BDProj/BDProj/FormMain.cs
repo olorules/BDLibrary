@@ -73,8 +73,10 @@ namespace BDProj
         {
             var searchValue = textBoxSearch.Text.ToLower();
             var searchedBooks = from books in context.Books
-                where books.Name.ToLower().Contains(searchValue) || books.Genre.ToLower().Contains(searchValue)
-                select books;
+                                join authorList in context.AuthorLists on books.Id equals authorList.BookId
+                                join authors in context.Authors on authorList.AuthorId equals authors.Id
+                where books.Name.ToLower().Contains(searchValue) || books.Genre.ToLower().Contains(searchValue) || authors.Lastname.ToLower().Contains(searchValue)
+                select new {books.Name, books.Genre, authors.Firstname ,authors.Lastname};
 
             dataGridViewShowData.DataSource = searchedBooks;
         }
