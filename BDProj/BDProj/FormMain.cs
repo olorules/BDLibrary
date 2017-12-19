@@ -53,11 +53,14 @@ namespace BDProj
 
             if (user != null)
             {
-                if(user.Status=='a')
+                if (user.Status == 'a')
                 {
                     MessageBox.Show("Witaj użytkowniku Admin", "OK!");
                 }
-                MessageBox.Show($"Witaj użytkowniku {user.Email}", "OK!");
+                else
+                {
+                    MessageBox.Show($"Witaj użytkowniku {user.Email}", "OK!");
+                }
             }
             else
             {
@@ -67,8 +70,8 @@ namespace BDProj
 
         private void buttonAddUser_Click(object sender, EventArgs e)
         {
-            //string hashedvalue = calculatemd5hash("admin12345");
-            //messageBox.Show($"Witaj użytkowniku Admin "+hashedValue, "OK!");
+            string hashedValue = CalculateMD5Hash("user134");
+            MessageBox.Show($"Witaj użytkowniku Admin "+hashedValue, "OK!");
         }
 
         private void buttonSearch_Click(object sender, EventArgs e)
