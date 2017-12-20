@@ -41,8 +41,7 @@ namespace BDProj
         {
             // First, we need to create the book, as the author list demands an id of the book
             if (textBoxName.Text.Length > 0 && textBoxISBN.Text.Length > 0 && textBoxGenre.Text.Length > 0 &&
-                textBoxName.Text.Length < 63 && textBoxISBN.Text.Length < 15 && textBoxGenre.Text.Length < 31
-                && false)//!!!!!false!!!!!!111oneone
+                textBoxName.Text.Length < 63 && textBoxISBN.Text.Length < 15 && textBoxGenre.Text.Length < 31)
             {
                 var bookToAdd = new Book();
                 bookToAdd.Name = textBoxName.Text;
@@ -68,6 +67,7 @@ namespace BDProj
                                  select Author.Id;
                     authors.Add(author.FirstOrDefault());
                 }
+
                 foreach (int value in authors)
                 {
                     if (value != 0)
