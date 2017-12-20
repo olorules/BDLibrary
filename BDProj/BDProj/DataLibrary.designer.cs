@@ -39,12 +39,10 @@ namespace BDProj
     partial void InsertBorrowing(Borrowing instance);
     partial void UpdateBorrowing(Borrowing instance);
     partial void DeleteBorrowing(Borrowing instance);
-    partial void InsertCopy(Copy instance);
-    partial void UpdateCopy(Copy instance);
-    partial void DeleteCopy(Copy instance);
     partial void InsertUser(User instance);
     partial void UpdateUser(User instance);
     partial void DeleteUser(User instance);
+
     partial void InsertAuthorList(AuthorList instance);
     partial void UpdateAuthorList(AuthorList instance);
     partial void DeleteAuthorList(AuthorList instance);
@@ -104,14 +102,6 @@ namespace BDProj
 			}
 		}
 		
-		public System.Data.Linq.Table<Copy> Copies
-		{
-			get
-			{
-				return this.GetTable<Copy>();
-			}
-		}
-		
 		public System.Data.Linq.Table<User> Users
 		{
 			get
@@ -136,11 +126,13 @@ namespace BDProj
 			}
 		}
 		
+
 		public System.Data.Linq.Table<AuthorList> AuthorLists
 		{
 			get
 			{
 				return this.GetTable<AuthorList>();
+
 			}
 		}
 	}
@@ -515,9 +507,9 @@ namespace BDProj
 		
 		private System.DateTime _ReturnDate;
 		
-		private EntityRef<Copy> _Copy;
-		
 		private EntityRef<User> _User;
+		
+		private EntityRef<Copy> _Copy;
 		
     #region Extensibility Method Definitions
     partial void OnLoaded();
@@ -539,8 +531,8 @@ namespace BDProj
 		
 		public Borrowing()
 		{
-			this._Copy = default(EntityRef<Copy>);
 			this._User = default(EntityRef<User>);
+			this._Copy = default(EntityRef<Copy>);
 			OnCreated();
 		}
 		
@@ -672,40 +664,6 @@ namespace BDProj
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Copy_Borrowing", Storage="_Copy", ThisKey="CopyId", OtherKey="Id", IsForeignKey=true)]
-		public Copy Copy
-		{
-			get
-			{
-				return this._Copy.Entity;
-			}
-			set
-			{
-				Copy previousValue = this._Copy.Entity;
-				if (((previousValue != value) 
-							|| (this._Copy.HasLoadedOrAssignedValue == false)))
-				{
-					this.SendPropertyChanging();
-					if ((previousValue != null))
-					{
-						this._Copy.Entity = null;
-						previousValue.Borrowings.Remove(this);
-					}
-					this._Copy.Entity = value;
-					if ((value != null))
-					{
-						value.Borrowings.Add(this);
-						this._CopyId = value.Id;
-					}
-					else
-					{
-						this._CopyId = default(int);
-					}
-					this.SendPropertyChanged("Copy");
-				}
-			}
-		}
-		
 		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="User_Borrowing", Storage="_User", ThisKey="UserId", OtherKey="Id", IsForeignKey=true)]
 		public User User
 		{
@@ -740,169 +698,36 @@ namespace BDProj
 			}
 		}
 		
-		public event PropertyChangingEventHandler PropertyChanging;
-		
-		public event PropertyChangedEventHandler PropertyChanged;
-		
-		protected virtual void SendPropertyChanging()
-		{
-			if ((this.PropertyChanging != null))
-			{
-				this.PropertyChanging(this, emptyChangingEventArgs);
-			}
-		}
-		
-		protected virtual void SendPropertyChanged(String propertyName)
-		{
-			if ((this.PropertyChanged != null))
-			{
-				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
-			}
-		}
-	}
-	
-	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.Copy")]
-	public partial class Copy : INotifyPropertyChanging, INotifyPropertyChanged
-	{
-		
-		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
-		
-		private int _Id;
-		
-		private int _BookId;
-		
-		private string _Status;
-		
-		private EntitySet<Borrowing> _Borrowings;
-		
-		private EntityRef<Book> _Book;
-		
-    #region Extensibility Method Definitions
-    partial void OnLoaded();
-    partial void OnValidate(System.Data.Linq.ChangeAction action);
-    partial void OnCreated();
-    partial void OnIdChanging(int value);
-    partial void OnIdChanged();
-    partial void OnBookIdChanging(int value);
-    partial void OnBookIdChanged();
-    partial void OnStatusChanging(string value);
-    partial void OnStatusChanged();
-    #endregion
-		
-		public Copy()
-		{
-			this._Borrowings = new EntitySet<Borrowing>(new Action<Borrowing>(this.attach_Borrowings), new Action<Borrowing>(this.detach_Borrowings));
-			this._Book = default(EntityRef<Book>);
-			OnCreated();
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Id", AutoSync=AutoSync.OnInsert, DbType="Int NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
-		public int Id
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Copy_Borrowing", Storage="_Copy", ThisKey="CopyId", OtherKey="Id", IsForeignKey=true)]
+		public Copy Copy
 		{
 			get
 			{
-				return this._Id;
+				return this._Copy.Entity;
 			}
 			set
 			{
-				if ((this._Id != value))
-				{
-					this.OnIdChanging(value);
-					this.SendPropertyChanging();
-					this._Id = value;
-					this.SendPropertyChanged("Id");
-					this.OnIdChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_BookId", DbType="Int NOT NULL")]
-		public int BookId
-		{
-			get
-			{
-				return this._BookId;
-			}
-			set
-			{
-				if ((this._BookId != value))
-				{
-					if (this._Book.HasLoadedOrAssignedValue)
-					{
-						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
-					}
-					this.OnBookIdChanging(value);
-					this.SendPropertyChanging();
-					this._BookId = value;
-					this.SendPropertyChanged("BookId");
-					this.OnBookIdChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Status", DbType="NVarChar(15) NOT NULL", CanBeNull=false)]
-		public string Status
-		{
-			get
-			{
-				return this._Status;
-			}
-			set
-			{
-				if ((this._Status != value))
-				{
-					this.OnStatusChanging(value);
-					this.SendPropertyChanging();
-					this._Status = value;
-					this.SendPropertyChanged("Status");
-					this.OnStatusChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Copy_Borrowing", Storage="_Borrowings", ThisKey="Id", OtherKey="CopyId")]
-		public EntitySet<Borrowing> Borrowings
-		{
-			get
-			{
-				return this._Borrowings;
-			}
-			set
-			{
-				this._Borrowings.Assign(value);
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Book_Copy", Storage="_Book", ThisKey="BookId", OtherKey="Id", IsForeignKey=true)]
-		public Book Book
-		{
-			get
-			{
-				return this._Book.Entity;
-			}
-			set
-			{
-				Book previousValue = this._Book.Entity;
+				Copy previousValue = this._Copy.Entity;
 				if (((previousValue != value) 
-							|| (this._Book.HasLoadedOrAssignedValue == false)))
+							|| (this._Copy.HasLoadedOrAssignedValue == false)))
 				{
 					this.SendPropertyChanging();
 					if ((previousValue != null))
 					{
-						this._Book.Entity = null;
-						previousValue.Copies.Remove(this);
+						this._Copy.Entity = null;
+						previousValue.Borrowings.Remove(this);
 					}
-					this._Book.Entity = value;
+					this._Copy.Entity = value;
 					if ((value != null))
 					{
-						value.Copies.Add(this);
-						this._BookId = value.Id;
+						value.Borrowings.Add(this);
+						this._CopyId = value.Id;
 					}
 					else
 					{
-						this._BookId = default(int);
+						this._CopyId = default(int);
 					}
-					this.SendPropertyChanged("Book");
+					this.SendPropertyChanged("Copy");
 				}
 			}
 		}
@@ -925,18 +750,6 @@ namespace BDProj
 			{
 				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
 			}
-		}
-		
-		private void attach_Borrowings(Borrowing entity)
-		{
-			this.SendPropertyChanging();
-			entity.Copy = this;
-		}
-		
-		private void detach_Borrowings(Borrowing entity)
-		{
-			this.SendPropertyChanging();
-			entity.Copy = null;
 		}
 	}
 	
@@ -1468,12 +1281,14 @@ namespace BDProj
 		}
 	}
 	
+
 	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.AuthorList")]
 	public partial class AuthorList : INotifyPropertyChanging, INotifyPropertyChanged
+
 	{
 		
 		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
-		
+
 		private int _AuthorId;
 		
 		private int _BookId;
@@ -1481,6 +1296,7 @@ namespace BDProj
 		private int _Id;
 		
 		private EntityRef<Author> _Author;
+
 		
 		private EntityRef<Book> _Book;
 		
@@ -1488,6 +1304,7 @@ namespace BDProj
     partial void OnLoaded();
     partial void OnValidate(System.Data.Linq.ChangeAction action);
     partial void OnCreated();
+
     partial void OnAuthorIdChanging(int value);
     partial void OnAuthorIdChanged();
     partial void OnBookIdChanging(int value);
@@ -1499,6 +1316,7 @@ namespace BDProj
 		public AuthorList()
 		{
 			this._Author = default(EntityRef<Author>);
+
 			this._Book = default(EntityRef<Book>);
 			OnCreated();
 		}
@@ -1523,6 +1341,7 @@ namespace BDProj
 					this._AuthorId = value;
 					this.SendPropertyChanged("AuthorId");
 					this.OnAuthorIdChanged();
+
 				}
 			}
 		}
@@ -1551,6 +1370,7 @@ namespace BDProj
 			}
 		}
 		
+
 		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Id", AutoSync=AutoSync.OnInsert, DbType="Int NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
 		public int Id
 		{
@@ -1601,11 +1421,14 @@ namespace BDProj
 						this._AuthorId = default(int);
 					}
 					this.SendPropertyChanged("Author");
+
 				}
 			}
 		}
 		
+
 		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Book_AuthorList", Storage="_Book", ThisKey="BookId", OtherKey="Id", IsForeignKey=true)]
+
 		public Book Book
 		{
 			get
@@ -1622,12 +1445,16 @@ namespace BDProj
 					if ((previousValue != null))
 					{
 						this._Book.Entity = null;
+
 						previousValue.AuthorLists.Remove(this);
+
 					}
 					this._Book.Entity = value;
 					if ((value != null))
 					{
+
 						value.AuthorLists.Add(this);
+
 						this._BookId = value.Id;
 					}
 					else
@@ -1658,6 +1485,7 @@ namespace BDProj
 				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
 			}
 		}
+
 	}
 }
 #pragma warning restore 1591

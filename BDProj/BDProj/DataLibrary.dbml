@@ -27,17 +27,8 @@
       <Column Name="BorrowDate" Type="System.DateTime" DbType="Date NOT NULL" CanBeNull="false" />
       <Column Name="BorrowDays" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
       <Column Name="ReturnDate" Type="System.DateTime" DbType="Date NOT NULL" CanBeNull="false" />
-      <Association Name="Copy_Borrowing" Member="Copy" ThisKey="CopyId" OtherKey="Id" Type="Copy" IsForeignKey="true" />
       <Association Name="User_Borrowing" Member="User" ThisKey="UserId" OtherKey="Id" Type="User" IsForeignKey="true" />
-    </Type>
-  </Table>
-  <Table Name="dbo.Copy" Member="Copies">
-    <Type Name="Copy">
-      <Column Name="Id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
-      <Column Name="BookId" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
-      <Column Name="Status" Type="System.String" DbType="NVarChar(15) NOT NULL" CanBeNull="false" />
-      <Association Name="Copy_Borrowing" Member="Borrowings" ThisKey="Id" OtherKey="CopyId" Type="Borrowing" />
-      <Association Name="Book_Copy" Member="Book" ThisKey="BookId" OtherKey="Id" Type="Book" IsForeignKey="true" />
+      <Association Name="Copy_Borrowing" Member="Copy" ThisKey="CopyId" OtherKey="Id" Type="Copy" IsForeignKey="true" />
     </Type>
   </Table>
   <Table Name="dbo.Users" Member="Users">
