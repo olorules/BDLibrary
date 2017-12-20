@@ -45,7 +45,8 @@
             this.buttonReservation = new System.Windows.Forms.Button();
             this.buttonShowUsers = new System.Windows.Forms.Button();
             this.buttonShowAvailableBooks = new System.Windows.Forms.Button();
-            this.button1 = new System.Windows.Forms.Button();
+            this.buttonShowLate = new System.Windows.Forms.Button();
+            this.buttonBorrow = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewShowData)).BeginInit();
             this.SuspendLayout();
             // 
@@ -55,17 +56,19 @@
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.dataGridViewShowData.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridViewShowData.Location = new System.Drawing.Point(185, 12);
+            this.dataGridViewShowData.Location = new System.Drawing.Point(247, 15);
+            this.dataGridViewShowData.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.dataGridViewShowData.Name = "dataGridViewShowData";
-            this.dataGridViewShowData.Size = new System.Drawing.Size(431, 239);
+            this.dataGridViewShowData.Size = new System.Drawing.Size(575, 294);
             this.dataGridViewShowData.TabIndex = 0;
             // 
             // buttonShowAllBorrows
             // 
             this.buttonShowAllBorrows.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.buttonShowAllBorrows.Location = new System.Drawing.Point(519, 257);
+            this.buttonShowAllBorrows.Location = new System.Drawing.Point(692, 316);
+            this.buttonShowAllBorrows.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.buttonShowAllBorrows.Name = "buttonShowAllBorrows";
-            this.buttonShowAllBorrows.Size = new System.Drawing.Size(97, 40);
+            this.buttonShowAllBorrows.Size = new System.Drawing.Size(129, 49);
             this.buttonShowAllBorrows.TabIndex = 1;
             this.buttonShowAllBorrows.Text = "Pokaż Wszystkie wypożyczenia";
             this.buttonShowAllBorrows.UseVisualStyleBackColor = true;
@@ -73,41 +76,46 @@
             // 
             // textBoxLogin
             // 
-            this.textBoxLogin.Location = new System.Drawing.Point(12, 28);
+            this.textBoxLogin.Location = new System.Drawing.Point(16, 34);
+            this.textBoxLogin.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.textBoxLogin.Name = "textBoxLogin";
-            this.textBoxLogin.Size = new System.Drawing.Size(100, 20);
+            this.textBoxLogin.Size = new System.Drawing.Size(132, 22);
             this.textBoxLogin.TabIndex = 2;
             // 
             // labelLogin
             // 
             this.labelLogin.AutoSize = true;
-            this.labelLogin.Location = new System.Drawing.Point(12, 12);
+            this.labelLogin.Location = new System.Drawing.Point(16, 15);
+            this.labelLogin.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.labelLogin.Name = "labelLogin";
-            this.labelLogin.Size = new System.Drawing.Size(33, 13);
+            this.labelLogin.Size = new System.Drawing.Size(43, 17);
             this.labelLogin.TabIndex = 3;
             this.labelLogin.Text = "Login";
             // 
             // labelPassword
             // 
             this.labelPassword.AutoSize = true;
-            this.labelPassword.Location = new System.Drawing.Point(12, 55);
+            this.labelPassword.Location = new System.Drawing.Point(16, 68);
+            this.labelPassword.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.labelPassword.Name = "labelPassword";
-            this.labelPassword.Size = new System.Drawing.Size(36, 13);
+            this.labelPassword.Size = new System.Drawing.Size(44, 17);
             this.labelPassword.TabIndex = 5;
             this.labelPassword.Text = "Hasło";
             // 
             // textBoxPassword
             // 
-            this.textBoxPassword.Location = new System.Drawing.Point(12, 71);
+            this.textBoxPassword.Location = new System.Drawing.Point(16, 87);
+            this.textBoxPassword.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.textBoxPassword.Name = "textBoxPassword";
-            this.textBoxPassword.Size = new System.Drawing.Size(100, 20);
+            this.textBoxPassword.Size = new System.Drawing.Size(132, 22);
             this.textBoxPassword.TabIndex = 4;
             // 
             // buttonLogin
             // 
-            this.buttonLogin.Location = new System.Drawing.Point(12, 97);
+            this.buttonLogin.Location = new System.Drawing.Point(16, 119);
+            this.buttonLogin.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.buttonLogin.Name = "buttonLogin";
-            this.buttonLogin.Size = new System.Drawing.Size(75, 23);
+            this.buttonLogin.Size = new System.Drawing.Size(100, 28);
             this.buttonLogin.TabIndex = 6;
             this.buttonLogin.Text = "Zaloguj";
             this.buttonLogin.UseVisualStyleBackColor = true;
@@ -116,9 +124,10 @@
             // buttonAddBook
             // 
             this.buttonAddBook.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.buttonAddBook.Location = new System.Drawing.Point(519, 303);
+            this.buttonAddBook.Location = new System.Drawing.Point(692, 373);
+            this.buttonAddBook.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.buttonAddBook.Name = "buttonAddBook";
-            this.buttonAddBook.Size = new System.Drawing.Size(97, 39);
+            this.buttonAddBook.Size = new System.Drawing.Size(129, 48);
             this.buttonAddBook.TabIndex = 7;
             this.buttonAddBook.Text = "Dodaj Książkę";
             this.buttonAddBook.UseVisualStyleBackColor = true;
@@ -126,9 +135,10 @@
             // 
             // buttonAddUser
             // 
-            this.buttonAddUser.Location = new System.Drawing.Point(12, 135);
+            this.buttonAddUser.Location = new System.Drawing.Point(16, 166);
+            this.buttonAddUser.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.buttonAddUser.Name = "buttonAddUser";
-            this.buttonAddUser.Size = new System.Drawing.Size(97, 39);
+            this.buttonAddUser.Size = new System.Drawing.Size(129, 48);
             this.buttonAddUser.TabIndex = 8;
             this.buttonAddUser.Text = "Dodaj użytkownika";
             this.buttonAddUser.UseVisualStyleBackColor = true;
@@ -137,27 +147,30 @@
             // textBoxSearch
             // 
             this.textBoxSearch.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.textBoxSearch.Location = new System.Drawing.Point(247, 268);
+            this.textBoxSearch.Location = new System.Drawing.Point(329, 330);
+            this.textBoxSearch.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.textBoxSearch.Name = "textBoxSearch";
-            this.textBoxSearch.Size = new System.Drawing.Size(100, 20);
+            this.textBoxSearch.Size = new System.Drawing.Size(132, 22);
             this.textBoxSearch.TabIndex = 9;
             // 
             // labelSearch
             // 
             this.labelSearch.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.labelSearch.AutoSize = true;
-            this.labelSearch.Location = new System.Drawing.Point(182, 271);
+            this.labelSearch.Location = new System.Drawing.Point(243, 334);
+            this.labelSearch.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.labelSearch.Name = "labelSearch";
-            this.labelSearch.Size = new System.Drawing.Size(59, 13);
+            this.labelSearch.Size = new System.Drawing.Size(76, 17);
             this.labelSearch.TabIndex = 10;
             this.labelSearch.Text = "Wyszukaj: ";
             // 
             // buttonSearch
             // 
             this.buttonSearch.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.buttonSearch.Location = new System.Drawing.Point(353, 266);
+            this.buttonSearch.Location = new System.Drawing.Point(471, 327);
+            this.buttonSearch.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.buttonSearch.Name = "buttonSearch";
-            this.buttonSearch.Size = new System.Drawing.Size(75, 23);
+            this.buttonSearch.Size = new System.Drawing.Size(100, 28);
             this.buttonSearch.TabIndex = 11;
             this.buttonSearch.Text = "Wyszukaj";
             this.buttonSearch.UseVisualStyleBackColor = true;
@@ -165,9 +178,10 @@
             // 
             // buttonRecentlyAdded
             // 
-            this.buttonRecentlyAdded.Location = new System.Drawing.Point(245, 294);
+            this.buttonRecentlyAdded.Location = new System.Drawing.Point(327, 362);
+            this.buttonRecentlyAdded.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.buttonRecentlyAdded.Name = "buttonRecentlyAdded";
-            this.buttonRecentlyAdded.Size = new System.Drawing.Size(102, 23);
+            this.buttonRecentlyAdded.Size = new System.Drawing.Size(136, 28);
             this.buttonRecentlyAdded.TabIndex = 12;
             this.buttonRecentlyAdded.Text = "Ostatnio dodane";
             this.buttonRecentlyAdded.UseVisualStyleBackColor = true;
@@ -175,16 +189,18 @@
             // 
             // textBoxReservation
             // 
-            this.textBoxReservation.Location = new System.Drawing.Point(12, 322);
+            this.textBoxReservation.Location = new System.Drawing.Point(16, 396);
+            this.textBoxReservation.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.textBoxReservation.Name = "textBoxReservation";
-            this.textBoxReservation.Size = new System.Drawing.Size(100, 20);
+            this.textBoxReservation.Size = new System.Drawing.Size(132, 22);
             this.textBoxReservation.TabIndex = 13;
             // 
             // buttonReservation
             // 
-            this.buttonReservation.Location = new System.Drawing.Point(12, 348);
+            this.buttonReservation.Location = new System.Drawing.Point(16, 428);
+            this.buttonReservation.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.buttonReservation.Name = "buttonReservation";
-            this.buttonReservation.Size = new System.Drawing.Size(75, 23);
+            this.buttonReservation.Size = new System.Drawing.Size(100, 28);
             this.buttonReservation.TabIndex = 14;
             this.buttonReservation.Text = "Zarezerwuj";
             this.buttonReservation.UseVisualStyleBackColor = true;
@@ -193,9 +209,10 @@
             // buttonShowUsers
             // 
             this.buttonShowUsers.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.buttonShowUsers.Location = new System.Drawing.Point(519, 348);
+            this.buttonShowUsers.Location = new System.Drawing.Point(692, 428);
+            this.buttonShowUsers.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.buttonShowUsers.Name = "buttonShowUsers";
-            this.buttonShowUsers.Size = new System.Drawing.Size(97, 40);
+            this.buttonShowUsers.Size = new System.Drawing.Size(129, 49);
             this.buttonShowUsers.TabIndex = 15;
             this.buttonShowUsers.Text = "Pokaż klientów";
             this.buttonShowUsers.UseVisualStyleBackColor = true;
@@ -204,31 +221,44 @@
             // buttonShowAvailableBooks
             // 
             this.buttonShowAvailableBooks.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.buttonShowAvailableBooks.Location = new System.Drawing.Point(416, 348);
+            this.buttonShowAvailableBooks.Location = new System.Drawing.Point(555, 428);
+            this.buttonShowAvailableBooks.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.buttonShowAvailableBooks.Name = "buttonShowAvailableBooks";
-            this.buttonShowAvailableBooks.Size = new System.Drawing.Size(97, 40);
+            this.buttonShowAvailableBooks.Size = new System.Drawing.Size(129, 49);
             this.buttonShowAvailableBooks.TabIndex = 16;
             this.buttonShowAvailableBooks.Text = "Pokaż dostępne książki";
             this.buttonShowAvailableBooks.UseVisualStyleBackColor = true;
             this.buttonShowAvailableBooks.Click += new System.EventHandler(this.buttonShowAvailableBooks_Click);
             // 
-            // button1
+            // buttonShowLate
             // 
-            this.button1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.button1.Location = new System.Drawing.Point(416, 303);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(97, 40);
-            this.button1.TabIndex = 17;
-            this.button1.Text = "Pokaż spóźnione";
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
+            this.buttonShowLate.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.buttonShowLate.Location = new System.Drawing.Point(555, 373);
+            this.buttonShowLate.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.buttonShowLate.Name = "buttonShowLate";
+            this.buttonShowLate.Size = new System.Drawing.Size(129, 49);
+            this.buttonShowLate.TabIndex = 17;
+            this.buttonShowLate.Text = "Pokaż spóźnione";
+            this.buttonShowLate.UseVisualStyleBackColor = true;
+            this.buttonShowLate.Click += new System.EventHandler(this.button1_Click);
+            // 
+            // buttonBorrow
+            // 
+            this.buttonBorrow.Location = new System.Drawing.Point(148, 428);
+            this.buttonBorrow.Name = "buttonBorrow";
+            this.buttonBorrow.Size = new System.Drawing.Size(100, 28);
+            this.buttonBorrow.TabIndex = 18;
+            this.buttonBorrow.Text = "Wypożycz";
+            this.buttonBorrow.UseVisualStyleBackColor = true;
+            this.buttonBorrow.Click += new System.EventHandler(this.buttonBorrow_Click);
             // 
             // FormMain
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(628, 409);
-            this.Controls.Add(this.button1);
+            this.ClientSize = new System.Drawing.Size(837, 503);
+            this.Controls.Add(this.buttonBorrow);
+            this.Controls.Add(this.buttonShowLate);
             this.Controls.Add(this.buttonShowAvailableBooks);
             this.Controls.Add(this.buttonShowUsers);
             this.Controls.Add(this.buttonReservation);
@@ -246,6 +276,7 @@
             this.Controls.Add(this.textBoxLogin);
             this.Controls.Add(this.buttonShowAllBorrows);
             this.Controls.Add(this.dataGridViewShowData);
+            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.Name = "FormMain";
             this.RightToLeftLayout = true;
             this.Text = "Okno Główne";
@@ -274,7 +305,8 @@
         private System.Windows.Forms.Button buttonReservation;
         private System.Windows.Forms.Button buttonShowUsers;
         private System.Windows.Forms.Button buttonShowAvailableBooks;
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button buttonShowLate;
+        private System.Windows.Forms.Button buttonBorrow;
     }
 }
 

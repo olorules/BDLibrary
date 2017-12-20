@@ -9,7 +9,7 @@ namespace BDProj
     public partial class FormMain : Form
     {
         private DataLibraryDataContext context = new DataLibraryDataContext();
-
+        private User userLoggedIn;
         public string CalculateMD5Hash(string input)
 
         {
@@ -48,6 +48,7 @@ namespace BDProj
 
             if (user != null)
             {
+                userLoggedIn = user;
                 if (user.Status == 'a')
                 {
                     MessageBox.Show("Witaj użytkowniku Admin", "OK!");
@@ -123,7 +124,10 @@ namespace BDProj
             }
             
             bookToReserve.Status = "Zarezerwowana";
+            bookToReserve.UserId = userLoggedIn.Id;
             context.SubmitChanges();
+            MessageBox.Show("Zarezerwowano");
+
         }
 
         private void buttonShowUsers_Click(object sender, EventArgs e)
@@ -165,6 +169,48 @@ namespace BDProj
         {
             AddBook addBook = new AddBook(context);
             addBook.ShowDialog();
+        }
+
+        private void buttonBorrow_Click(object sender, EventArgs e)
+        {
+            var titleToReserve = textBoxReservation.Text;
+
+            if (titleToReserve == "")
+            {
+                MessageBox.Show("Podaj tytuł książki do wypożyczenia.");
+                return;
+            }
+
+            var bookToBorrow = (from books in context.Books
+                                 join copies in context.Copies on books.Id equals copies.BookId
+                                 where ((copies.Status == "Dostępna") || (copies.Status == "Zarezerwowana")) && books.Name == titleToReserve
+                                 select copies).FirstOrDefault();
+
+            if (bookToBorrow == null)
+            {
+                MessageBox.Show("Brak dostępnej książki do wypożyczenia");
+                return;
+            }
+
+            if(bookToBorrow.Status == "Dostępna")
+            {
+                bookToBorrow.Status = "Wypożyczona";
+            }
+            else if(bookToBorrow.Status == "Zarezerwowana")
+            {
+                if(bookToBorrow.UserId==userLoggedIn.Id)
+                    bookToBorrow.Status = "Wypożyczona";
+                else
+                {
+                    MessageBox.Show("Brak dostępnej książki do wypożyczenia");
+                    return;
+                }
+            }
+            var borrowingToAdd = new Borrowing();
+            borrowingToAdd.CopyId = bookToBorrow.Id;
+            //borrowingToAdd.UserId = 
+            context.SubmitChanges();
+            MessageBox.Show("Wypożyczono");
         }
     }
 }
