@@ -160,5 +160,11 @@ namespace BDProj
 
             dataGridViewShowData.DataSource = lateBorrowings;
         }
+
+        private void buttonAddBook_Click(object sender, EventArgs e)
+        {
+            AddBook addBook = new AddBook(context);
+            addBook.ShowDialog();
+        }
     }
 }
