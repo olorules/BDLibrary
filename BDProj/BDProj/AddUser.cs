@@ -70,7 +70,7 @@ namespace BDProj
                     userToAdd.Country = textBoxCountry.Text;
                     userToAdd.ZipCode = textBoxZipCode.Text;
                     var passwordToDataBase = CalculateMD5Hash(textBoxPassword.Text);
-                    userToAdd.Password = textBoxPassword.Text;
+                    userToAdd.Password = passwordToDataBase;
 
                     context.Users.InsertOnSubmit(userToAdd);
                     context.SubmitChanges();

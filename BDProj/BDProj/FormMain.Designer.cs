@@ -122,6 +122,7 @@
             this.buttonAddBook.TabIndex = 7;
             this.buttonAddBook.Text = "Dodaj Książkę";
             this.buttonAddBook.UseVisualStyleBackColor = true;
+            this.buttonAddBook.Click += new System.EventHandler(this.buttonAddBook_Click);
             // 
             // buttonAddUser
             // 
