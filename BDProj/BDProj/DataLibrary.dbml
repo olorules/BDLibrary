@@ -1,19 +1,11 @@
 ﻿<?xml version="1.0" encoding="utf-8"?><Database Name="Library" Class="DataLibraryDataContext" xmlns="http://schemas.microsoft.com/linqtosql/dbml/2007">
-  <Connection Mode="AppSettings" ConnectionString="Data Source=KOMPUTER-OLOR\SQLEXPRESS;Initial Catalog=Library;Integrated Security=True" SettingsObjectName="BDProj.Properties.Settings" SettingsPropertyName="LibraryConnectionString" Provider="System.Data.SqlClient" />
+  <Connection Mode="AppSettings" ConnectionString="Data Source=.\SQLEXPRESS;Initial Catalog=Library;Integrated Security=True" SettingsObjectName="BDProj.Properties.Settings" SettingsPropertyName="LibraryConnectionString" Provider="System.Data.SqlClient" />
   <Table Name="dbo.Author" Member="Authors">
     <Type Name="Author">
       <Column Name="Id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
       <Column Name="Firstname" Type="System.String" DbType="NVarChar(63) NOT NULL" CanBeNull="false" />
       <Column Name="Lastname" Type="System.String" DbType="NVarChar(63) NOT NULL" CanBeNull="false" />
       <Association Name="Author_AuthorList" Member="AuthorLists" ThisKey="Id" OtherKey="AuthorId" Type="AuthorList" />
-    </Type>
-  </Table>
-  <Table Name="dbo.AuthorList" Member="AuthorLists">
-    <Type Name="AuthorList">
-      <Column Name="AuthorId" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
-      <Column Name="BookId" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
-      <Association Name="Author_AuthorList" Member="Author" ThisKey="AuthorId" OtherKey="Id" Type="Author" IsForeignKey="true" />
-      <Association Name="Book_AuthorList" Member="Book" ThisKey="BookId" OtherKey="Id" Type="Book" IsForeignKey="true" />
     </Type>
   </Table>
   <Table Name="dbo.Book" Member="Books">
@@ -23,8 +15,8 @@
       <Column Name="ISBN" Type="System.String" DbType="NVarChar(15)" CanBeNull="true" />
       <Column Name="Genre" Type="System.String" DbType="NVarChar(31)" CanBeNull="true" />
       <Column Name="DateOfAdd" Type="System.DateTime" DbType="Date NOT NULL" CanBeNull="false" />
-      <Association Name="Book_AuthorList" Member="AuthorLists" ThisKey="Id" OtherKey="BookId" Type="AuthorList" />
       <Association Name="Book_Copy" Member="Copies" ThisKey="Id" OtherKey="BookId" Type="Copy" />
+      <Association Name="Book_AuthorList" Member="AuthorLists" ThisKey="Id" OtherKey="BookId" Type="AuthorList" />
     </Type>
   </Table>
   <Table Name="dbo.Borrowings" Member="Borrowings">
@@ -80,6 +72,15 @@
       <Column Name="CopyId" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
       <Column Name="ReturnDate" Type="System.DateTime" DbType="Date NOT NULL" CanBeNull="false" />
       <Column Name="Name" Type="System.String" DbType="NVarChar(63) NOT NULL" CanBeNull="false" />
+    </Type>
+  </Table>
+  <Table Name="dbo.AuthorList" Member="AuthorLists">
+    <Type Name="AuthorList">
+      <Column Name="AuthorId" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="BookId" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="Id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Association Name="Author_AuthorList" Member="Author" ThisKey="AuthorId" OtherKey="Id" Type="Author" IsForeignKey="true" />
+      <Association Name="Book_AuthorList" Member="Book" ThisKey="BookId" OtherKey="Id" Type="Book" IsForeignKey="true" />
     </Type>
   </Table>
 </Database>
