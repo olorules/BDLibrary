@@ -59,6 +59,16 @@ namespace BDProj
                              && (Book.Genre == textBoxGenre.Text)
                              select Book.Id;
 
+                int quantity = int.Parse(textBoxCopies.Text);
+                for(int i=0;i<quantity;i++)
+                {
+                    Copy copyToAdd = new Copy();
+                    copyToAdd.BookId = bookId.FirstOrDefault();
+                    copyToAdd.Status = "Dostępna";
+                    context.Copies.InsertOnSubmit(copyToAdd);
+                    context.SubmitChanges();
+                }
+
                 List<int> authors = new List<int>();
                 //checking if the Athor is already in DB
                 foreach (Author element in listOfAuthors)
@@ -79,6 +89,8 @@ namespace BDProj
                     else
                     {
                         //Create Author and then create the author list entity
+                        var authorToAdd = new Author();
+                        //authorToAdd.Firstname=
                     }
                 }
             }
@@ -87,5 +99,6 @@ namespace BDProj
                 MessageBox.Show("Zły format danych", "Błąd!");
             }
         }
+
     }
 }
