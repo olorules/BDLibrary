@@ -24,7 +24,11 @@ namespace BDProj
             if ((textBoxName.Text != null || textBoxName.Text != "") &&
                 textBoxSurname.Text != null || textBoxSurname.Text != "")
             {
-                Author author = new Author();
+                Author author = new Author()
+                {
+                    Firstname = textBoxName.Text,
+                    Lastname = textBoxSurname.Text
+                };
                 addBook.PushAuthor(author);
                 MessageBox.Show("Dodano!", "Dodano", MessageBoxButtons.OK);
                 this.Close();

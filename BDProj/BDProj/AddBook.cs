@@ -47,6 +47,7 @@ namespace BDProj
                 bookToAdd.Name = textBoxName.Text;
                 bookToAdd.ISBN = textBoxISBN.Text;
                 bookToAdd.Genre = textBoxGenre.Text;
+                bookToAdd.DateOfAdd = DateTime.Now;
                 //Jak z tymi kopiami robimy
 
                 context.Books.InsertOnSubmit(bookToAdd);
@@ -70,27 +71,47 @@ namespace BDProj
 
                 List<int> authors = new List<int>();
                 //checking if the Athor is already in DB
-                foreach (Author element in listOfAuthors)
+                foreach (var element in listOfAuthors)
                 {
-                    var author = from Author in context.Authors
-                                 where (Author.Firstname == element.Firstname) && (Author.Lastname == element.Lastname)
-                                 select Author.Id;
-                    authors.Add(author.FirstOrDefault());
-                }
+                    var author = from auth in context.Authors
+                                 where (auth.Firstname == element.Firstname) && (auth.Lastname == element.Lastname)
+                                 select auth.Id;
 
-                foreach (int value in authors)
-                {
-                    if (value != 0)
+                    var authorFirst = author.FirstOrDefault();
+
+                    if (authorFirst != 0)
                     {
                         var authorList = new AuthorList();
-                        authorList.AuthorId = value;
+                        authorList.AuthorId = authorFirst;
                         authorList.BookId = bookId.FirstOrDefault();
+
+                        context.AuthorLists.InsertOnSubmit(authorList);
+                        context.SubmitChanges();
                     }
                     else
                     {
-                        //Create Author and then create the author list entity
+                        var id = (from auth in context.Authors
+                                     select auth.Id).Max();
+
                         var authorToAdd = new Author();
-                        //authorToAdd.Firstname=
+                        authorToAdd.Firstname = element.Firstname;
+                        authorToAdd.Lastname = element.Lastname;
+                        
+                        context.Authors.InsertOnSubmit(authorToAdd);
+                        context.SubmitChanges();
+
+                        var addedAuthor = (from authrs in context.Authors
+                            where authrs.Lastname == element.Lastname
+                            select authrs.Id).FirstOrDefault();
+
+                        var authorList = new AuthorList()
+                        {
+                            AuthorId = addedAuthor,
+                            BookId = bookId.FirstOrDefault()
+                        };
+
+                        context.AuthorLists.InsertOnSubmit(authorList);
+                        context.SubmitChanges();
                     }
                 }
             }
@@ -98,6 +119,7 @@ namespace BDProj
             {
                 MessageBox.Show("Zły format danych", "Błąd!");
             }
+            this.Close();
         }
 
     }

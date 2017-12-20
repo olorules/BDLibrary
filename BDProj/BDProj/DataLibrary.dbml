@@ -8,14 +8,6 @@
       <Association Name="Author_AuthorList" Member="AuthorLists" ThisKey="Id" OtherKey="AuthorId" Type="AuthorList" />
     </Type>
   </Table>
-  <Table Name="dbo.AuthorList" Member="AuthorLists">
-    <Type Name="AuthorList">
-      <Column Name="AuthorId" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
-      <Column Name="BookId" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
-      <Association Name="Author_AuthorList" Member="Author" ThisKey="AuthorId" OtherKey="Id" Type="Author" IsForeignKey="true" />
-      <Association Name="Book_AuthorList" Member="Book" ThisKey="BookId" OtherKey="Id" Type="Book" IsForeignKey="true" />
-    </Type>
-  </Table>
   <Table Name="dbo.Book" Member="Books">
     <Type Name="Book">
       <Column Name="Id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
@@ -23,8 +15,8 @@
       <Column Name="ISBN" Type="System.String" DbType="NVarChar(15)" CanBeNull="true" />
       <Column Name="Genre" Type="System.String" DbType="NVarChar(31)" CanBeNull="true" />
       <Column Name="DateOfAdd" Type="System.DateTime" DbType="Date NOT NULL" CanBeNull="false" />
-      <Association Name="Book_AuthorList" Member="AuthorLists" ThisKey="Id" OtherKey="BookId" Type="AuthorList" />
       <Association Name="Book_Copy" Member="Copies" ThisKey="Id" OtherKey="BookId" Type="Copy" />
+      <Association Name="Book_AuthorList" Member="AuthorLists" ThisKey="Id" OtherKey="BookId" Type="AuthorList" />
     </Type>
   </Table>
   <Table Name="dbo.Borrowings" Member="Borrowings">
@@ -73,14 +65,13 @@
       <Column Name="Name" Type="System.String" DbType="NVarChar(63) NOT NULL" CanBeNull="false" />
     </Type>
   </Table>
-  <Table Name="dbo.Copy" Member="Copies">
-    <Type Name="Copy">
-      <Column Name="Id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+  <Table Name="dbo.AuthorList" Member="AuthorLists">
+    <Type Name="AuthorList">
+      <Column Name="AuthorId" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
       <Column Name="BookId" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
-      <Column Name="Status" Type="System.String" DbType="NVarChar(15) NOT NULL" CanBeNull="false" />
-      <Column Name="UserId" Type="System.Int32" DbType="Int" CanBeNull="true" />
-      <Association Name="Copy_Borrowing" Member="Borrowings" ThisKey="Id" OtherKey="CopyId" Type="Borrowing" />
-      <Association Name="Book_Copy" Member="Book" ThisKey="BookId" OtherKey="Id" Type="Book" IsForeignKey="true" />
+      <Column Name="Id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Association Name="Author_AuthorList" Member="Author" ThisKey="AuthorId" OtherKey="Id" Type="Author" IsForeignKey="true" />
+      <Association Name="Book_AuthorList" Member="Book" ThisKey="BookId" OtherKey="Id" Type="Book" IsForeignKey="true" />
     </Type>
   </Table>
 </Database>
